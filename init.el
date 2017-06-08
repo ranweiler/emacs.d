@@ -142,4 +142,4 @@
 (use-package avy
   :ensure t
   :config
-  (bind-key "M-." 'avy-goto-word-or-subword-1))
+  (bind-key "C-c ;" 'avy-goto-word-or-subword-1))
