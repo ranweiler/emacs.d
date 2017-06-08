@@ -112,6 +112,25 @@
   ;; Don't check Elisp code for errors in documentation and style.
   (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
 
+;; https://company-mode.github.io
+(use-package company
+  :ensure t
+  :config
+  ;; Helps with function signatures.
+  (setq company-tooltip-align-annotations t)
+
+  ;; Allow use of `C-n` and `C-p` to navigate company menu.
+  ;; `M-n` and `M-p` are the defaults, and remain active.
+  (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
+  (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
+
+  (defun my/company-hook ()
+    (bind-key "TAB" 'company-indent-or-complete-common)
+    (company-mode))
+
+  ;; Only activate `company-mode` in programming modes.
+  (add-hook 'prog-mode-hook 'my/company-hook))
+
 (use-package helm-ag
   :ensure t
   :after helm-projectile
