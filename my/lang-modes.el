@@ -16,6 +16,8 @@
 
 (use-package toml-mode :ensure t)
 
+(use-package yaml-mode :ensure t)
+
 (use-package idris-mode :ensure t)
 
 (use-package rust-mode :ensure t)
