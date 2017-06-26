@@ -29,3 +29,5 @@
   :config
   (add-hook 'racer-mode-hook 'company-mode)
   (add-hook 'rust-mode-hook 'racer-mode))
+
+(use-package typescript-mode :ensure t)
