@@ -18,7 +18,10 @@
 
 (use-package yaml-mode :ensure t)
 
-(use-package idris-mode :ensure t)
+(use-package idris-mode
+  :ensure t
+  :config
+  (setq idris-repl-banner-functions '()))
 
 (use-package rust-mode :ensure t)
 
