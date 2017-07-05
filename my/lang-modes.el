@@ -35,4 +35,7 @@
   (add-hook 'racer-mode-hook 'company-mode)
   (add-hook 'rust-mode-hook 'racer-mode))
 
-(use-package typescript-mode :ensure t)
+(use-package typescript-mode
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.ts[x]\\'" . typescript-mode)))
