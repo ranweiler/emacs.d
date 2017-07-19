@@ -10,3 +10,5 @@
 ;; Ensure `dired-x` is loaded so we can use `dired-jump`, and bind it.
 (use-package dired-x
   :bind ("C-x j" . dired-jump))
+
+(global-set-key (kbd "C-c t") 'ansi-term)
