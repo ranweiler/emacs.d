@@ -7,7 +7,8 @@
 
 (defun my/set-face (face)
   (interactive)
-  (set-face-attribute 'default nil :font face )
+  (set-face-attribute 'default nil :font face)
+  (set-face-attribute 'fixed-pitch nil :font face)
   (set-frame-font face nil t))
 
 (defun my/font-increment ()
