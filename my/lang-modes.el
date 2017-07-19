@@ -25,6 +25,11 @@
   :config
   (setq idris-repl-banner-functions '()))
 
+(use-package lua-mode
+  :ensure t
+  :config
+  (setq lua-indent-level 4))
+
 (use-package rust-mode :ensure t)
 
 (use-package racer
