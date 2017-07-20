@@ -1,5 +1,5 @@
-(use-package plan9-theme :ensure t)
-(use-package sunny-day-theme :ensure t)
+(use-package plan9-theme :ensure t :disabled)
+(use-package sunny-day-theme :ensure t :disabled)
 
 (defun my/set-height (height)
   (interactive)
