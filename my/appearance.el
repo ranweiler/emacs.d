@@ -1,3 +1,4 @@
+(use-package darktooth-theme :ensure t :disabled)
 (use-package plan9-theme :ensure t :disabled)
 (use-package sunny-day-theme :ensure t :disabled)
 
