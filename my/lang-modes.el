@@ -20,6 +20,8 @@
 
 (use-package erlang :ensure t)
 
+(use-package go-mode :ensure t)
+
 (use-package idris-mode
   :ensure t
   :config
