@@ -43,4 +43,11 @@
 (use-package web-mode
   :ensure t
   :config
+  (setq-default web-mode-comment-formats
+                '(("javascript" . "//")
+                  ("jsx" . "//")
+                  ("typescript" . "//")
+                  ("tsx") . "//"))
+  (setq web-mode-comment-style 2)
+  (setq web-mode-auto-quote-style 2)  ;; Use single quotes.
   (add-to-list 'auto-mode-alist '("\\.ts[x]\\'" . web-mode)))
