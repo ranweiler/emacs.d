@@ -20,6 +20,13 @@
 
 (use-package erlang :ensure t)
 
+(use-package company-go
+  :ensure t
+  :defer t
+  :init
+  (with-eval-after-load 'company
+    (add-to-list 'company-backends 'company-go)))
+
 (use-package go-mode :ensure t)
 
 (use-package idris-mode
