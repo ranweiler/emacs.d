@@ -49,8 +49,28 @@
   (add-hook 'racer-mode-hook 'company-mode)
   (add-hook 'rust-mode-hook 'racer-mode))
 
+(defun my/tide-setup ()
+  (interactive)
+
+  (tide-setup)
+
+  (flycheck-mode +1)
+  (flycheck-add-next-checker 'tsx-tide '(warning . typescript-tslint) 'append)
+  (flycheck-add-mode 'typescript-tslint 'web-mode)
+
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+  (company-mode +1))
+
+(defun my/web-mode-tide-hook ()
+  (when (string-equal "ts" (file-name-extension buffer-file-name))
+    (my/tide-setup))
+  (when (string-equal "tsx" (file-name-extension buffer-file-name))
+    (my/tide-setup)))
+
 (use-package web-mode
   :ensure t
+  :after tide
   :config
   (setq-default web-mode-comment-formats
                 '(("javascript" . "//")
@@ -59,4 +79,7 @@
                   ("tsx") . "//"))
   (setq web-mode-comment-style 2)
   (setq web-mode-auto-quote-style 2)  ;; Use single quotes.
-  (add-to-list 'auto-mode-alist '("\\.ts[x]\\'" . web-mode)))
+  (add-to-list 'auto-mode-alist '("\\.ts[x]\\'" . web-mode))
+  (add-hook 'web-mode-hook 'my/web-mode-tide-hook))
+
+(use-package tide :ensure t)
