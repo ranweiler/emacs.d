@@ -58,7 +58,6 @@
 ;; https://github.com/emacs-helm/helm/wiki
 (use-package helm
   :ensure t
-  :commands (helm-mode)
 
   :config
   ;; Globally enable fuzzy matching.
