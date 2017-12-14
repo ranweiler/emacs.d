@@ -21,7 +21,10 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
-(require 'use-package)
+
+;; Not required at runtime, only compile time.
+(eval-when-compile
+  (require 'use-package))
 
 ;; Load custom configuration files.
 (my/load-config "annoyances")
