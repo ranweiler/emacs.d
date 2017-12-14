@@ -58,11 +58,14 @@
 ;; https://github.com/emacs-helm/helm/wiki
 (use-package helm
   :ensure t
-
-  :config
+  ;; :commands (helm-mode)
+  :init
   ;; Globally enable fuzzy matching.
   (setq helm-mode-fuzzy-match t)
   (setq helm-completion-in-region-fuzzy-match t)
+
+  :config
+  (helm-mode)
 
   ;; Use `helm-M-x`.
   (global-set-key (kbd "M-x") 'helm-M-x)
@@ -80,20 +83,21 @@
 ;; https://projectile.readthedocs.io/en/latest/
 (use-package projectile
   :ensure t
-  :config
+  :init
   ;; When we switch to a project, open its root directory in dired.
   (setq projectile-switch-project-action 'projectile-dired)
 
+  :config
   ;; Enable Projectile globally
-  (projectile-global-mode))
+  (projectile-mode))
 
 (use-package helm-projectile
   :ensure t
-  :defer t
-  :after projectile
+  :after helm
+  :init
+  (setq projectile-completion-system 'helm)
   :config
   ;; Use Helm for completion of projectile project names.
-  (setq projectile-completion-system 'helm)
 
   ;; Use Helm versions of common Projectile commands.
   (helm-projectile-on))
@@ -107,20 +111,20 @@
 ;; http://www.flycheck.org/en/latest/#the-user-guide
 (use-package flycheck
   :ensure t
-  :config
-
-  (global-flycheck-mode)
-
+  :init
   ;; Don't check Elisp code for errors in documentation and style.
-  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
+  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+
+  :config
+  (global-flycheck-mode))
 
 ;; https://company-mode.github.io
 (use-package company
   :ensure t
-  :config
+  :init
   ;; Helps with function signatures.
   (setq company-tooltip-align-annotations t)
-
+  :config
   ;; Allow use of `C-n` and `C-p` to navigate company menu.
   ;; `M-n` and `M-p` are the defaults, and remain active.
   (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
@@ -136,6 +140,8 @@
 (use-package helm-ag
   :ensure t
   :after helm-projectile
+  :init
+  (setq helm-ag-base-command "rg --vimgrep --no-heading")
   :config
   ;; The use of `bind-key*` (with asterisk) is necessary to avoid
   ;; shadowing by other modes.
