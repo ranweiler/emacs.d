@@ -10,3 +10,7 @@ at the top of each file I changed."))
 (defun my/bytecode-recompile ()
   (interactive)
   (byte-recompile-directory package-user-dir nil 'force))
+
+(defun my/goto-org-dir ()
+  (interactive)
+  (dired "~/org"))
