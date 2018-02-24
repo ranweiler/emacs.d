@@ -27,6 +27,10 @@
   (with-eval-after-load 'company
     (add-to-list 'company-backends 'company-go)))
 
+(use-package fsharp-mode :ensure t)
+
+(use-package fstar-mode :ensure t)
+
 (use-package go-mode :ensure t)
 
 (use-package idris-mode
