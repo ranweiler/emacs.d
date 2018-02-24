@@ -27,3 +27,6 @@
 
 ;; Highlight matching parentheses.
 (show-paren-mode t)
+
+(setq git-commit-fill-column 72)
+(setq git-commit-check-style-conventions t)
