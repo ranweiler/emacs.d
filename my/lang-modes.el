@@ -1,7 +1,7 @@
 (add-hook
  'c-mode-common-hook
  (lambda ()
-   (setq c-basic-offset 4)
+   (setq c-basic-offset 2)
    (setq c-default-style "k&r")
    (setq comment-start "//")
    (setq comment-end "")))
